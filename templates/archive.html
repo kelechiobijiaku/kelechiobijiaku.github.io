@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{HEAD}}
+</head>
+<body class="event-page archive-page" data-event-id="{{ID}}" data-event-phase="past">
+{{HEADER}}
+<main id="main-content">
+  <section class="event-heading section dark archive-heading">
+    <a class="event-text-link light" href="/speaking.html#past">Speaking &amp; Events</a>
+    <div class="eyebrow">FROM THE SPEAKING ARCHIVE</div>
+    <h1>{{TITLE}}</h1>
+    <p class="event-heading-date">{{DISPLAY_DATE}} · {{TOPIC}}</p>
+    <span class="event-badge">{{ROLE}}</span>
+  </section>
+  <section class="section archive-feature" aria-labelledby="archive-session-heading">
+    <figure class="archive-primary">
+      {{PRIMARY_IMAGE}}
+      <figcaption>Conference photograph · select to enlarge.<br><a class="event-text-link" href="{{SOURCE_ORIGINAL}}" target="_blank" rel="noopener noreferrer">View unedited original</a></figcaption>
+    </figure>
+    <div class="archive-feature-copy">
+      <div class="eyebrow">THE ENGAGEMENT</div>
+      <h2 id="archive-session-heading">{{TOPIC}}</h2>
+      <p class="representation-note">{{REPRESENTATION}}</p>
+      <dl class="event-facts">
+        <div><dt>Conference</dt><dd>{{TITLE}}</dd></div>
+        <div><dt>Location</dt><dd>{{VENUE}}</dd></div>
+        <div><dt>Capacity</dt><dd>{{ROLE}}</dd></div>
+      </dl>
+      <p>{{FOCUS}}</p>
+    </div>
+  </section>
+  <section class="section tinted archive-gallery-section" aria-labelledby="archive-photos-heading">
+    <div class="eyebrow">SELECTED MOMENTS</div>
+    <h2 id="archive-photos-heading">From the stage and the session</h2>
+    <div class="archive-photo-gallery">{{GALLERY}}</div>
+  </section>
+  {{VIDEOS}}
+  {{MATERIALS}}
+  <section class="contact event-contact">
+    <div class="eyebrow">CONTINUE THE CONVERSATION</div>
+    <h2>A practical perspective for your next event.</h2>
+    <p>Speaking, panel discussions and workshops on procurement, contract management, commercial law and governance.</p>
+    <div class="event-actions"><a class="btn" href="/speaking.html#invite">Invite me to speak</a><a class="event-text-link" href="/speaking.html">All speaking engagements</a><a class="event-text-link" href="/gallery.html">Photo journal</a></div>
+  </section>
+</main>
+{{FOOTER}}
+{{LIGHTBOX}}
+<script src="/script.js" defer></script>
+<script src="/data/events-data.js" defer></script>
+<script src="/events.js" defer></script>
+</body>
+</html>

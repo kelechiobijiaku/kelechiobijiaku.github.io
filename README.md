@@ -50,6 +50,10 @@ The `Refresh speaking and event pages` GitHub Actions workflow checks daily at 0
 
 Only the nearest current event is featured on the homepage; the speaking page lists all current and archived events. Past event pages and images remain available at their original URLs. Existing speaking and training history is in `templates/speaking.html`.
 
+For an older engagement with no confirmed exact date, use `archived: true`, an integer `year`, and a descriptive `displayDate` instead of inventing a day. These entries use `templates/archive.html`, stay in the past list and have no countdown or registration promotion. Include `representation` and `invitedSpeaker` when participation was on behalf of another speaker or institution. The NBA 2026 entry records Kelechi Obijiaku's representation of invited speaker Fatai Idowu Onafowote and LSPPA.
+
+An event can also have a `videos` array with `title`, `description`, `file` (MP4), `poster`, `duration` (ISO 8601) and `uploadDate`. Optional `videoHeading` and `videoIntro` describe the collection. Players preserve sound, use standard H.264/AAC, load on demand and provide native controls and downloads. The NBA clips are explicitly labelled conference atmosphere.
+
 ### Add post-event materials
 
 Add a plain-text `summary` to the event entry and/or add items to its `resources` array, then rebuild. Resources appear only when populated. Examples:

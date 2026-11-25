@@ -64,6 +64,91 @@
       "addressRegion": "Lagos",
       "addressCountry": "NG",
       "metaDescription": "Join Kelechi Obijiaku at Consulting Business Conference 2026 on 2 December in Lagos or online, speaking on public sector consulting opportunities."
+    },
+    {
+      "id": "nba-annual-general-conference-2026",
+      "archived": true,
+      "year": 2026,
+      "displayDate": "2026 · Port Harcourt",
+      "title": "NBA Annual General Conference 2026",
+      "host": "Nigerian Bar Association",
+      "venue": "Port Harcourt, Rivers State, Nigeria",
+      "venueName": "Port Harcourt",
+      "addressLocality": "Port Harcourt",
+      "addressRegion": "Rivers State",
+      "addressCountry": "NG",
+      "role": "Representative of the invited speaker and LSPPA",
+      "speaker": "Kelechi Uzoma Obijiaku",
+      "designation": "Lawyer and Procurement Specialist",
+      "invitedSpeaker": {
+        "name": "Fatai Idowu Onafowote",
+        "title": "Director-General",
+        "organization": "Lagos State Public Procurement Agency"
+      },
+      "representation": "Kelechi Uzoma Obijiaku represented Mr. Fatai Idowu Onafowote, Director-General of the Lagos State Public Procurement Agency (LSPPA), who was the invited speaker, and the Agency at the conference.",
+      "topic": "E-Commerce and Procurement",
+      "focus": "E-procurement, transparency and the transformation of public contracting.",
+      "description": "At the 2026 Nigerian Bar Association Annual General Conference in Port Harcourt, Kelechi Uzoma Obijiaku participated in the E-Commerce and Procurement session in a representative capacity. Kelechi Uzoma Obijiaku represented Mr. Fatai Idowu Onafowote, Director-General of the Lagos State Public Procurement Agency (LSPPA), who was the invited speaker, and the Agency at the conference.",
+      "metaDescription": "Kelechi Obijiaku at NBA Conference 2026, representing invited speaker Fatai Idowu Onafowote and LSPPA. Selected conference photographs and atmosphere videos.",
+      "participation": "In person",
+      "image": {
+        "file": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-speaking.webp",
+        "thumbnail": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-speaking-600.webp",
+        "original": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-speaking-enhanced.jpg",
+        "sourceOriginal": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-speaking-original.jpg",
+        "width": 1673,
+        "height": 940,
+        "caption": "Speaking at the NBA conference in a representative capacity",
+        "alt": "Kelechi Uzoma Obijiaku speaking at the NBA Annual General Conference 2026, representing invited speaker Fatai Idowu Onafowote and the Lagos State Public Procurement Agency."
+      },
+      "gallery": [
+        {
+          "file": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-stage.webp",
+          "original": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-stage.jpg",
+          "width": 1080,
+          "height": 607,
+          "caption": "On stage during the E-Commerce and Procurement session",
+          "alt": "Kelechi Obijiaku at the lectern during the NBA conference E-Commerce and Procurement session, representing the invited speaker and LSPPA."
+        },
+        {
+          "file": "/assets/events/nba-annual-general-conference-2026/nba-session-participants.webp",
+          "original": "/assets/events/nba-annual-general-conference-2026/nba-session-participants.jpg",
+          "width": 1080,
+          "height": 810,
+          "caption": "With session participants at the conference",
+          "alt": "Kelechi Obijiaku with session participants in front of the NBA Annual General Conference 2026 E-Commerce and Procurement backdrop."
+        },
+        {
+          "file": "/assets/events/nba-annual-general-conference-2026/nba-conference-presentation.webp",
+          "original": "/assets/events/nba-annual-general-conference-2026/nba-conference-presentation.jpg",
+          "width": 750,
+          "height": 1050,
+          "caption": "Conference presentation, received in a representative capacity",
+          "alt": "Kelechi Obijiaku receiving a conference presentation while representing invited speaker Fatai Idowu Onafowote and LSPPA."
+        }
+      ],
+      "videos": [
+        {
+          "title": "Conference atmosphere · live music",
+          "description": "A short atmosphere clip showing a live musical performance and the conference audience.",
+          "file": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-01.mp4",
+          "poster": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-01.jpg",
+          "duration": "PT24.51S",
+          "uploadDate": "2026-11-25"
+        },
+        {
+          "title": "Conference atmosphere · another view",
+          "description": "Another view of the live musical performance during the conference.",
+          "file": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-02.mp4",
+          "poster": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-02.jpg",
+          "duration": "PT24.44S",
+          "uploadDate": "2026-11-25"
+        }
+      ],
+      "resources": [],
+      "summary": "",
+      "videoHeading": "Conference atmosphere",
+      "videoIntro": "Short clips of live music and audience participation from the conference."
     }
   ]
 }

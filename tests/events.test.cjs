@@ -5,6 +5,16 @@ const vm = require('node:vm');
 const {lagosDate, phase, countdown} = require('../events.js');
 const event = JSON.parse(fs.readFileSync('data/events.json', 'utf8')).events[0];
 
+test('historical NBA engagement stays archived without fabricating an exact date', () => {
+  const nba = JSON.parse(fs.readFileSync('data/events.json', 'utf8')).events.find(e => e.id === 'nba-annual-general-conference-2026');
+  assert.equal(nba.date, undefined);
+  assert.equal(phase(nba, new Date('2026-11-25T12:00:00Z')), 'past');
+  assert.equal(phase(nba, new Date('2027-01-01T00:00:00Z')), 'past');
+  assert.match(nba.representation, /Fatai Idowu Onafowote.*invited speaker/);
+  assert.match(nba.representation, /Lagos State Public Procurement Agency/);
+  assert.equal(nba.registrationUrl, undefined);
+});
+
 test('event date and archive boundary use Lagos time in any visitor timezone', () => {
   for (const tz of ['UTC', 'America/Los_Angeles', 'Asia/Tokyo', 'Africa/Lagos']) {
     process.env.TZ = tz;

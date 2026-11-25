@@ -46,9 +46,15 @@ if (galleryGrid) fetch("/gallery.json").then(r => r.ok ? r.json() : []).then(ite
     const img = document.createElement("img");
     const cap = document.createElement("figcaption");
     img.src = item.file;
-    img.alt = item.caption || "Professional photograph";
+    img.alt = item.alt || item.caption || "Professional photograph";
+    img.loading = "lazy";
     cap.textContent = item.caption || "";
-    fig.append(img, cap);
+    if (item.url && item.url.startsWith("/") && !item.url.startsWith("//")) {
+      const link = document.createElement("a");
+      link.href = item.url;
+      link.append(img);
+      fig.append(link, cap);
+    } else fig.append(img, cap);
     galleryGrid.append(fig);
   });
 }).catch(() => {});

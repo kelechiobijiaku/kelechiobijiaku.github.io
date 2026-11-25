@@ -39,6 +39,8 @@ def event_url(event):
 
 
 def phase(event, now):
+    if event.get("archived"):
+        return "past"
     today = now.astimezone(LAGOS).date().isoformat()
     if today > event.get("endDate", event["date"]):
         return "past"
@@ -83,11 +85,15 @@ def upcoming_card(event):
 
 
 def past_card(event):
-    return f'''<article class="past-event">
-      <a href="{event_url(event)}"><img src="{esc(event['image'].get('thumbnail', event['image']['file']))}" alt="{esc(event['image']['alt'])}" width="88" height="124" loading="lazy"></a>
-      <div class="event-date"><time datetime="{esc(event['date'])}">{esc(event['displayDate'])}</time></div>
+    photo_class = " past-event--photo" if event.get("archived") else ""
+    date_label = f'<time datetime="{esc(event["date"])}">{esc(event["displayDate"])}</time>' if event.get("date") else esc(event["displayDate"])
+    representation = f'<p class="past-representation">{esc(event["representation"])}</p>' if event.get("representation") else ""
+    return f'''<article class="past-event{photo_class}">
+      <a class="past-event-image" href="{event_url(event)}"><img src="{esc(event['image'].get('thumbnail', event['image']['file']))}" alt="{esc(event['image']['alt'])}" width="{event['image']['width']}" height="{event['image']['height']}" loading="lazy"></a>
+      <div class="event-date">{date_label}</div>
       <h3><a href="{event_url(event)}">{esc(event['title'])}</a></h3>
       <p>{esc(event['role'])} · {esc(event['topic'])}</p>
+      {representation}
       <p>{esc(event['venue'])}</p>
       <a class="event-text-link" href="{event_url(event)}">View event archive</a>
     </article>'''
@@ -128,18 +134,19 @@ def schema(event, now):
         "@type": "Event", "@id": BASE + event_url(event) + "#event",
         "name": event["title"], "url": BASE + event_url(event),
         "description": event["topic"] + ". " + event["focus"] + " " + event["description"],
-        "startDate": event["date"], "endDate": event.get("endDate", event["date"]),
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode" if event.get("registrationUrl") else "https://schema.org/OfflineEventAttendanceMode",
         "location": [
             {"@type": "Place", "name": event.get("venueName", event["venue"]),
-             "address": {"@type": "PostalAddress", "addressLocality": event.get("addressLocality", ""), "addressRegion": event.get("addressRegion", ""), "addressCountry": event.get("addressCountry", "")}},
-            {"@type": "VirtualLocation", "url": event["registrationUrl"]}
+             "address": {"@type": "PostalAddress", "addressLocality": event.get("addressLocality", ""), "addressRegion": event.get("addressRegion", ""), "addressCountry": event.get("addressCountry", "")}}
         ],
         "organizer": {"@type": "Organization", "name": event["host"]},
         "performer": {"@id": PERSON["@id"]},
         "image": [BASE + event["image"]["original"]] + [BASE + im["original"] for im in event.get("gallery", [])]
     }
+    if event.get("date"):
+        result.update({"startDate": event["date"], "endDate": event.get("endDate", event["date"]), "eventStatus": "https://schema.org/EventScheduled"})
+    if event.get("registrationUrl"):
+        result["location"].append({"@type": "VirtualLocation", "url": event["registrationUrl"]})
     if phase(event, now) != "past":
         result["offers"] = {"@type": "Offer", "url": event["registrationUrl"]}
     return result
@@ -150,7 +157,7 @@ def substitute(template, values):
         template = template.replace("{{" + key + "}}", value)
     if re.search(r"\{\{[A-Z_]+\}\}", template):
         raise ValueError("Unresolved template field")
-    return template
+    return re.sub(r"[ \t]+(?=\n|$)", "", template)
 
 
 def materials(event):
@@ -168,6 +175,38 @@ def materials(event):
     return '<section class="section tinted event-materials" id="materials"><div class="eyebrow">FROM THE EVENT</div><h2>Resources &amp; reflections</h2>' + (f'<p>{esc(summary)}</p>' if summary else '') + '<div class="material-list">' + ''.join(cards) + '</div></section>'
 
 
+def video_section(event):
+    if not event.get("videos"):
+        return ""
+    cards = []
+    for n, video in enumerate(event["videos"], 1):
+        cards.append(f'''<figure class="archive-video">
+          <video controls playsinline preload="none" poster="{esc(video['poster'])}" aria-label="{esc(video['title'])}" aria-describedby="video-description-{n}">
+            <source src="{esc(video['file'])}" type="video/mp4">
+            Your browser does not support embedded video. <a href="{esc(video['file'])}">Open this atmosphere clip</a>.
+          </video>
+          <figcaption><h3>{esc(video['title'])}</h3><p id="video-description-{n}">{esc(video['description'])}</p><a class="event-text-link" href="{esc(video['file'])}" download>Download clip</a></figcaption>
+        </figure>''')
+    return '<section class="section archive-videos" id="videos"><div class="eyebrow">FROM THE EVENT</div><h2>' + esc(event.get("videoHeading", "Event videos")) + '</h2><p>' + esc(event.get("videoIntro", "Selected recordings from the event.")) + '</p><div class="archive-video-grid">' + ''.join(cards) + '</div></section>'
+
+
+def archive_page(event, now):
+    gallery = []
+    for im in event.get("gallery", []):
+        gallery.append('<figure>' + image_link(im) + f'<figcaption>{esc(im["caption"])}</figcaption></figure>')
+    graph = [PERSON, schema(event, now)]
+    for n, video in enumerate(event.get("videos", []), 1):
+        graph.append({"@type": "VideoObject", "@id": BASE + event_url(event) + f"#video-{n}", "name": video["title"], "description": video["description"], "thumbnailUrl": BASE + video["poster"], "contentUrl": BASE + video["file"], "uploadDate": video["uploadDate"], "duration": video["duration"], "about": {"@id": BASE + event_url(event) + "#event"}})
+    values = {key.upper(): esc(event[key]) for key in ["id", "title", "topic", "representation", "host", "venue", "role", "focus"]}
+    values.update({
+        "HEAD": head(event["title"] + " | Kelechi Obijiaku", event["metaDescription"], BASE + event_url(event), event["image"], graph),
+        "DISPLAY_DATE": esc(event["displayDate"]), "HEADER": header(), "FOOTER": FOOTER, "LIGHTBOX": LIGHTBOX,
+        "PRIMARY_IMAGE": image_link(event["image"]), "SOURCE_ORIGINAL": esc(event["image"].get("sourceOriginal", event["image"]["original"])),
+        "GALLERY": ''.join(gallery), "VIDEOS": video_section(event), "MATERIALS": materials(event)
+    })
+    return substitute((ROOT / "templates/archive.html").read_text(), values)
+
+
 def build(now):
     data = json.loads((ROOT / "data/events.json").read_text())
     events = data["events"]
@@ -177,11 +216,14 @@ def build(now):
     for event in events:
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", event["id"]):
             raise ValueError("Use a safe, permanent lowercase event ID")
-        datetime.fromisoformat(event["date"])
-        if event.get("endDate", event["date"]) < event["date"]:
-            raise ValueError("An event cannot end before it starts")
+        if event.get("date"):
+            datetime.fromisoformat(event["date"])
+            if event.get("endDate", event["date"]) < event["date"]:
+                raise ValueError("An event cannot end before it starts")
+        elif not (event.get("archived") and isinstance(event.get("year"), int)):
+            raise ValueError("Only an explicitly archived event may omit its exact date; provide its year")
     upcoming = sorted([e for e in events if phase(e, now) != "past"], key=lambda e: e["date"])
-    past = sorted([e for e in events if phase(e, now) == "past"], key=lambda e: e["date"], reverse=True)
+    past = sorted([e for e in events if phase(e, now) == "past"], key=lambda e: e.get("date", str(e.get("year", ""))), reverse=True)
     root_index = ROOT / "index.html"
     homepage = root_index.read_text()
     home_section = '''<section class="section events-section" id="upcoming-events" aria-labelledby="home-events-heading"><div class="events-heading"><div><div class="eyebrow">SPEAKING &amp; PROFESSIONAL DIALOGUE</div><h2 id="home-events-heading">Upcoming Events</h2></div><a class="event-text-link" href="/speaking.html">All speaking &amp; events</a></div><div data-event-list="featured">''' + (upcoming_card(upcoming[0]) if upcoming else EMPTY) + '''</div></section>'''
@@ -214,6 +256,9 @@ def build(now):
     (ROOT / "events").mkdir(exist_ok=True)
     event_template = (ROOT / "templates/event.html").read_text()
     for event in events:
+        if event.get("archived"):
+            (ROOT / event_url(event).lstrip('/')).write_text(archive_page(event, now))
+            continue
         gallery = []
         for im in event.get("gallery", []):
             caption = im["caption"]
@@ -230,12 +275,12 @@ def build(now):
             "HEADER": header(), "FOOTER": FOOTER, "LIGHTBOX": LIGHTBOX,
             "PRIMARY_IMAGE": image_link(event["image"]), "COUNTDOWN": countdown(event),
             "TAKEAWAYS": ''.join('<li>' + esc(text) + '</li>' for text in event.get("takeaways", [])),
-            "GALLERY": ''.join(gallery), "MATERIALS": materials(event)
+            "GALLERY": ''.join(gallery), "VIDEOS": video_section(event), "MATERIALS": materials(event)
         })
         (ROOT / event_url(event).lstrip('/')).write_text(substitute(event_template, values))
     client = {"timezone": data["timezone"], "emptyHtml": EMPTY, "events": []}
     for event in events:
-        client["events"].append({**event, "url": event_url(event), "upcomingHtml": upcoming_card(event), "pastHtml": past_card(event)})
+        client["events"].append({**event, "url": event_url(event), "upcomingHtml": upcoming_card(event) if not event.get("archived") else "", "pastHtml": past_card(event)})
     (ROOT / "data/events-data.js").write_text("// Generated by scripts/build_events.py; edit data/events.json instead.\nwindow.SPEAKING_EVENTS_DATA = " + structured(client) + ";\n")
     sitemap = (ROOT / "sitemap.xml").read_text()
     for event in events:

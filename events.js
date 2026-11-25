@@ -9,6 +9,7 @@
     return `${parts.year}-${parts.month}-${parts.day}`;
   }
   function phase(event, now = new Date()) {
+    if (event.archived) return "past";
     const today = lagosDate(now);
     if (today > (event.endDate || event.date)) return "past";
     return today >= event.date ? "live" : "upcoming";
@@ -34,7 +35,7 @@
     if (today !== lastDate) {
       lastDate = today;
       const upcoming = events.filter(e => phase(e, now) !== "past").sort((a, b) => a.date.localeCompare(b.date));
-      const past = events.filter(e => phase(e, now) === "past").sort((a, b) => b.date.localeCompare(a.date));
+      const past = events.filter(e => phase(e, now) === "past").sort((a, b) => (b.date || String(b.year)).localeCompare(a.date || String(a.year)));
       document.querySelectorAll("[data-event-list]").forEach(list => {
         const kind = list.dataset.eventList;
         if (kind === "featured") list.innerHTML = upcoming[0]?.upcomingHtml || data.emptyHtml;
