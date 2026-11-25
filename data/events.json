@@ -89,7 +89,7 @@
       "topic": "E-Commerce and Procurement",
       "focus": "E-procurement, transparency and the transformation of public contracting.",
       "description": "At the 2026 Nigerian Bar Association Annual General Conference in Port Harcourt, Kelechi Uzoma Obijiaku participated in the E-Commerce and Procurement session in a representative capacity. Kelechi Uzoma Obijiaku represented Mr. Fatai Idowu Onafowote, Director-General of the Lagos State Public Procurement Agency (LSPPA), who was the invited speaker, and the Agency at the conference.",
-      "metaDescription": "Kelechi Obijiaku at NBA Conference 2026, representing invited speaker Fatai Idowu Onafowote and LSPPA. Selected conference photographs and atmosphere videos.",
+      "metaDescription": "Kelechi Obijiaku at NBA Conference 2026, representing invited speaker Fatai Idowu Onafowote and LSPPA. Selected conference photographs.",
       "participation": "In person",
       "image": {
         "file": "/assets/events/nba-annual-general-conference-2026/kelechi-obijiaku-nba-speaking.webp",
@@ -127,28 +127,8 @@
           "alt": "Kelechi Obijiaku receiving a conference presentation while representing invited speaker Fatai Idowu Onafowote and LSPPA."
         }
       ],
-      "videos": [
-        {
-          "title": "Conference atmosphere · live music",
-          "description": "A short atmosphere clip showing a live musical performance and the conference audience.",
-          "file": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-01.mp4",
-          "poster": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-01.jpg",
-          "duration": "PT24.51S",
-          "uploadDate": "2026-11-25"
-        },
-        {
-          "title": "Conference atmosphere · another view",
-          "description": "Another view of the live musical performance during the conference.",
-          "file": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-02.mp4",
-          "poster": "/assets/events/nba-annual-general-conference-2026/nba-conference-atmosphere-02.jpg",
-          "duration": "PT24.44S",
-          "uploadDate": "2026-11-25"
-        }
-      ],
       "resources": [],
-      "summary": "",
-      "videoHeading": "Conference atmosphere",
-      "videoIntro": "Short clips of live music and audience participation from the conference."
+      "summary": ""
     }
   ]
 }
