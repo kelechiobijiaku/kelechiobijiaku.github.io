@@ -1,0 +1,55 @@
+name: Refresh speaking and event pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 00:07 Africa/Lagos. Browser updates happen at the actual Lagos midnight.
+    - cron: '7 23 * * *'
+  push:
+    branches: [main]
+    paths:
+      - data/events.json
+      - scripts/build_events.py
+      - templates/**
+      - events.js
+      - tests/events.test.cjs
+      - .github/workflows/refresh-events.yml
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: refresh-event-pages
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and check event pages
+        run: |
+          python scripts/build_events.py
+          node --test tests/events.test.cjs
+      - name: Save date changes and refresh GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add index.html speaking.html events/ data/events-data.js sitemap.xml
+          if git diff --cached --quiet; then
+            echo 'Event pages are current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh speaking event listings for Lagos date'
+          git push
+          # GITHUB_TOKEN commits do not themselves trigger the branch Pages build.
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

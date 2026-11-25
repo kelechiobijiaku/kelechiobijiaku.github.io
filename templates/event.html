@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{HEAD}}
+</head>
+<body class="event-page" data-event-id="{{ID}}" data-event-phase="{{PHASE}}">
+{{HEADER}}
+<main id="main-content">
+  <section class="event-heading section dark">
+    <a class="event-text-link light" href="/speaking.html">Speaking &amp; Events</a>
+    <div class="eyebrow">{{ROLE}} · {{HOST}}</div>
+    <h1>{{TITLE}}</h1>
+    <p class="event-heading-date"><time datetime="{{DATE}}">{{DISPLAY_DATE}}</time> · {{PARTICIPATION}}</p>
+    <span class="event-badge" data-event-status>{{STATUS}}</span>
+  </section>
+  <section class="section event-detail" aria-labelledby="topic-heading">
+    <figure class="event-primary">
+      {{PRIMARY_IMAGE}}
+      <figcaption>Personalised speaker announcement · select to enlarge</figcaption>
+    </figure>
+    <div class="event-detail-copy">
+      <div class="eyebrow">THE PRESENTATION</div>
+      <h2 id="topic-heading">{{TOPIC}}</h2>
+      <p class="event-speaker"><strong>{{SPEAKER}}</strong><span>{{DESIGNATION}} · {{ROLE}}</span></p>
+      <p class="event-focus">{{FOCUS}}</p>
+      <dl class="event-facts">
+        <div><dt>Date</dt><dd><time datetime="{{DATE}}">{{DISPLAY_DATE}}</time></dd></div>
+        <div><dt>Venue</dt><dd>{{VENUE}}</dd></div>
+        <div><dt>Host</dt><dd>{{HOST}}</dd></div>
+        <div><dt>Participation</dt><dd>{{PARTICIPATION}}</dd></div>
+      </dl>
+      <div data-upcoming-only>
+        {{COUNTDOWN}}
+        <div class="event-actions"><a class="btn" href="{{REGISTRATION}}" target="_blank" rel="noopener noreferrer">Register for the conference</a></div>
+        <p class="event-note">Registration and participation details are managed by the organiser.</p>
+      </div>
+      <p class="event-archive-note" data-past-only>This event is part of my speaking archive. The original announcement and conference artwork are retained below.</p>
+    </div>
+  </section>
+  <section class="section tinted two" aria-labelledby="session-heading">
+    <div class="eyebrow">EXPERTISE. ACCESS. OPPORTUNITY.</div>
+    <div>
+      <h2 id="session-heading">A clearer route to public sector consulting.</h2>
+      <p>{{DESCRIPTION}}</p>
+      <h3 class="session-subheading">The presentation explores</h3>
+      <ul class="event-takeaways">{{TAKEAWAYS}}</ul>
+    </div>
+  </section>
+  <section class="section event-gallery-section" aria-labelledby="flyers-heading">
+    <div class="eyebrow">CONFERENCE ARTWORK</div>
+    <h2 id="flyers-heading">Event flyers &amp; speaker lineup</h2>
+    <p>Explore the organiser’s original flyers. Select an image to enlarge it or open the full-size original to read the details. Dates and offers printed on the artwork reflect the original announcements.</p>
+    <div class="flyer-gallery">{{GALLERY}}</div>
+  </section>
+  {{MATERIALS}}
+  <section class="contact event-contact">
+    <div class="eyebrow">CONTINUE THE CONVERSATION</div>
+    <h2>A practical perspective for your next event.</h2>
+    <p>Speaking, panel discussions and workshops on procurement, contract management, commercial law and governance.</p>
+    <div class="event-actions"><a class="btn" href="/speaking.html#invite">Invite me to speak</a><a class="event-text-link" href="/speaking.html">All speaking engagements</a><a class="event-text-link" href="/">Homepage</a></div>
+  </section>
+</main>
+{{FOOTER}}
+{{LIGHTBOX}}
+<script src="/script.js" defer></script>
+<script src="/data/events-data.js" defer></script>
+<script src="/events.js" defer></script>
+</body>
+</html>

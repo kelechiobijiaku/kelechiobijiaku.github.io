@@ -1,0 +1,69 @@
+{
+  "timezone": "Africa/Lagos",
+  "events": [
+    {
+      "id": "consulting-business-conference-2026",
+      "title": "Consulting Business Conference 2026",
+      "date": "2026-12-02",
+      "endDate": "2026-12-02",
+      "displayDate": "Wednesday, 2 December 2026",
+      "venue": "Lagos Marriott Hotel, Ikeja, Lagos, Nigeria",
+      "host": "School of Consulting",
+      "role": "Invited Speaker",
+      "speaker": "Kelechi Uzoma Obijiaku",
+      "designation": "Lawyer and Procurement Specialist",
+      "topic": "Understanding Public Sector Consulting Opportunities",
+      "focus": "How consultants can identify, access and compete for public sector consulting opportunities.",
+      "description": "Government needs expertise. How can your consulting business get through the door? Join Kelechi Uzoma Obijiaku for a practical look at identifying public sector opportunities, understanding procurement requirements and competing with confidence. Designed for consultants, consulting firms, entrepreneurs and professionals ready to turn their expertise into credible government contracting opportunities.",
+      "participation": "In person or online",
+      "registrationUrl": "https://consultingbusinessconference.com/register",
+      "takeaways": [
+        "Recognise where your expertise meets public sector consulting needs.",
+        "Understand the procurement requirements that shape access to government contracts.",
+        "Prepare to compete with a clearer view of opportunities, eligibility and client expectations."
+      ],
+      "image": {
+        "file": "/assets/events/consulting-business-conference-2026/kelechi-obijiaku-speaker-announcement.webp",
+        "thumbnail": "/assets/events/consulting-business-conference-2026/kelechi-obijiaku-speaker-announcement-480.webp",
+        "original": "/assets/events/consulting-business-conference-2026/kelechi-obijiaku-speaker-announcement.jpg",
+        "width": 904,
+        "height": 1280,
+        "alt": "Personalised speaker announcement for Kelechi Uzoma Obijiaku, Lawyer and Procurement Specialist, presenting Understanding Public Sector Consulting Opportunities at Consulting Business Conference 2026 on 2 December in Lagos."
+      },
+      "gallery": [
+        {
+          "file": "/assets/events/consulting-business-conference-2026/conference-speaker-lineup.webp",
+          "original": "/assets/events/consulting-business-conference-2026/conference-speaker-lineup.jpg",
+          "width": 1224,
+          "height": 1280,
+          "alt": "Consulting Business Conference 2026 speaker lineup, including Kelechi Uzoma Obijiaku, hosted by School of Consulting at Lagos Marriott Hotel, Ikeja.",
+          "caption": "Conference speaker lineup"
+        },
+        {
+          "file": "/assets/events/consulting-business-conference-2026/conference-registration-offers.webp",
+          "original": "/assets/events/consulting-business-conference-2026/conference-registration-offers.jpg",
+          "width": 1254,
+          "height": 1254,
+          "alt": "Original conference registration flyer advertising in-person and online offers with an expiry date of 30 November 2026.",
+          "caption": "Original registration flyer · offers expire 30 November 2026",
+          "expiresOn": "2026-11-30"
+        },
+        {
+          "file": "/assets/events/consulting-business-conference-2026/original-seven-day-countdown.webp",
+          "original": "/assets/events/consulting-business-conference-2026/original-seven-day-countdown.jpg",
+          "width": 1254,
+          "height": 1254,
+          "alt": "Original seven-days-to-go speaker promotional flyer for Consulting Business Conference 2026; preserved as conference artwork, not a live countdown.",
+          "caption": "Original seven-day promotional artwork · not a live countdown"
+        }
+      ],
+      "summary": "",
+      "resources": [],
+      "venueName": "Lagos Marriott Hotel, Ikeja",
+      "addressLocality": "Ikeja",
+      "addressRegion": "Lagos",
+      "addressCountry": "NG",
+      "metaDescription": "Join Kelechi Obijiaku at Consulting Business Conference 2026 on 2 December in Lagos or online, speaking on public sector consulting opportunities."
+    }
+  ]
+}
