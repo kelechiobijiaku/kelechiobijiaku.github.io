@@ -85,7 +85,7 @@ class PublicationTests(unittest.TestCase):
             self.assertEqual(schema['author']['name'], self.data['publication']['author']['name'])
             if a.get('linkedinUrl'):
                 self.assertIn(a['linkedinUrl'], p.links)
-                self.assertEqual(schema['isBasedOn'], a['linkedinUrl'])
+                self.assertEqual(schema['isBasedOn' if a.get('source', {}).get('platform') == 'LinkedIn' else 'sameAs'], a['linkedinUrl'])
             related = publication.related_articles(a, self.articles)
             self.assertNotIn(a['id'], [r['id'] for r in related])
             self.assertEqual(len({r['id'] for r in related}), len(related))
@@ -182,7 +182,8 @@ class PublicationTests(unittest.TestCase):
     def test_duplicate_source_urls_and_modified_imports_are_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
             data = json.loads(json.dumps(self.data))
-            data['articles'][1]['linkedinUrl'] = data['articles'][0]['linkedinUrl']
+            linked = [a for a in data['articles'] if a.get('linkedinUrl')]
+            linked[1]['linkedinUrl'] = linked[0]['linkedinUrl']
             config = Path(temp) / 'data.json'
             config.write_text(json.dumps(data))
             with self.assertRaisesRegex(ValueError, 'already registered'):

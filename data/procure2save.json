@@ -46,6 +46,41 @@
   ],
   "articles": [
     {
+      "id": "one-market-one-procurement-law",
+      "url": "/procure2save/one-market-one-procurement-law/",
+      "title": "One Market, One Procurement Law? Why Europe Is Divided",
+      "date": "2026-11-26",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/one-market-one-procurement-law.html",
+      "coverImage": "/assets/procure2save/one-market-one-procurement-law.png",
+      "coverAlt": "Editorial illustration of one open legal rulebook and separate national folders in a European institutional meeting room.",
+      "coverWidth": 1672,
+      "coverHeight": 941,
+      "categories": [
+        "international-developments",
+        "procurement-law",
+        "institutional-reform",
+        "public-procurement"
+      ],
+      "featured": true,
+      "introduction": "Europe is trying to make it easier for businesses to compete for government contracts across its 27 member states. But several governments are asking a difficult question: must a common market also mean a single procurement law? It is a debate with familiar echoes in Nigeria, where contractors navigate different state laws, portals and registration requirements. In this edition of Procure2save, I explore where harmonisation helps, where local flexibility matters, and why uniform rules do not always produce uniform results.",
+      "source": {
+        "platform": "Approved author manuscript",
+        "approvedOn": "2026-11-26",
+        "textSha256": "1123e4ee42343dc22c2c3ad582c9157d258d3591d0a451f9ab7088b510a33ce7",
+        "coverSha256": "e1575394568dfdabecc2af3805243e06ae9c6d634af00c9587bd1fba266c8c5d"
+      },
+      "references": [
+        "https://www.mlex.com/mlex/trade/articles/2558524/eu-governments-seek-discretion-over-implementation-of-procurement-overhaul",
+        "https://single-market-economy.ec.europa.eu/publications/proposal-regulation-public-contracts-and-concessions_en",
+        "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A52026SC0592",
+        "https://eur-lex.europa.eu/eli/treaty/tfeu_2012/art_288/oj/eng",
+        "https://ecowas.int/wp-content/uploads/2023/07/EN-EOI-Individual-Consultant-Harmonize-Procurement-Systems-and-Practices.pdf"
+      ]
+    },
+    {
       "id": "whose-economy-are-we-building",
       "url": "/procure2save/whose-economy-are-we-building/",
       "title": "Whose Economy Are We Building? Rethinking Preference in Nigerian Public Procurement",
@@ -63,7 +98,7 @@
         "public-procurement",
         "governance"
       ],
-      "featured": true,
+      "featured": false,
       "linkedinUrl": "https://www.linkedin.com/pulse/whose-economy-we-building-rethinking-preference-public-obijiaku--8iwwf/",
       "source": {
         "platform": "LinkedIn",

@@ -227,11 +227,14 @@ def article_page(article, articles, data):
     pub = data['publication']
     original = ''
     if article.get('linkedinUrl'):
-        original = f'<p class="p2-source">First published on LinkedIn on {pretty_date(article["date"])}. <a href="{esc(article["linkedinUrl"])}" target="_blank" rel="noopener noreferrer">Read the original edition</a>.</p>'
+        if article.get('source', {}).get('platform') == 'LinkedIn':
+            original = f'<p class="p2-source">First published on LinkedIn on {pretty_date(article["date"])}. <a href="{esc(article["linkedinUrl"])}" target="_blank" rel="noopener noreferrer">Read the original edition</a>.</p>'
+        else:
+            original = f'<p class="p2-source">Also published in Procure2save on LinkedIn. <a href="{esc(article["linkedinUrl"])}" target="_blank" rel="noopener noreferrer">Read the LinkedIn edition</a>.</p>'
     body = template('article.html', TITLE=esc(article['title']), TOPICS=categories_html(article,data), DATE=date_html(article), AUTHOR=esc(pub['author']['name']), COVER=image_html(article,True), BODY=article['body'], SOURCE=original, RELATED=''.join(card(a,data) for a in related_articles(article,articles)), SUBSCRIBE=subscription(data), AUTHOR_BOX=author_box(data))
     schema = {"@context":"https://schema.org", "@type":"Article", "@id":ORIGIN+article['url']+'#article', "headline":article['title'], "description":article['description'], "url":ORIGIN+article['url'], "mainEntityOfPage":{"@type":"WebPage", "@id":ORIGIN+article['url']}, "datePublished":article['date'], "dateModified":article.get('modified',article['date']), "author":{"@type":"Person", "@id":ORIGIN+'/#person', "name":pub['author']['name'], "url":pub['author']['url'], "sameAs":pub['author']['linkedinUrl']}, "publisher":{"@type":"Organization", "name":pub['name'], "url":pub['url']}, "image":{"@type":"ImageObject", "url":urljoin(ORIGIN,article['coverImage']), "width":article['coverWidth'], "height":article['coverHeight']}, "articleSection":[c['name'] for c in data['categories'] if c['id'] in article['categories']], "inLanguage":"en", "wordCount":len(article['text'].split()), "articleBody":article['text'], "isPartOf":{"@type":"CreativeWorkSeries", "name":pub['name'], "url":pub['url'], "sameAs":pub['newsletterUrl']}}
     if article.get('linkedinUrl'):
-        schema['isBasedOn'] = article['linkedinUrl']
+        schema['isBasedOn' if article.get('source', {}).get('platform') == 'LinkedIn' else 'sameAs'] = article['linkedinUrl']
     return shell(article['title']+' | Procure2save',article['description'],article['url'],body,data,article['coverImage'],schema,article)
 
 
