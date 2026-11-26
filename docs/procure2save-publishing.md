@@ -24,6 +24,8 @@ This supports publication on the same day. It does not promise a single simultan
 
 All public article pages contain complete text in the HTML. JavaScript enhances archive search, category, year and ordering controls. Topic pages and the full archive remain browsable without JavaScript. Search runs locally in the visitor's browser; no search queries are sent to another service.
 
+GitHub Pages excludes `content/procure2save` and `templates/procure2save` from the deployed site through `_config.yml`. Source bodies remain in the repository for editing; each edition has one finished public reading page.
+
 ## Add an edition through GitHub
 
 Keep the permanent ID and URL unchanged after first publication. A custom existing article URL can be retained in `url`; do not create a second copy under a new path. The builder rejects duplicate IDs, permanent URLs and LinkedIn source URLs, and refuses to overwrite unrelated existing HTML files.

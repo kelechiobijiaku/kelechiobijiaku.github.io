@@ -1,0 +1,4 @@
+# Serve the generated publication pages, with one public reading URL per edition.
+exclude:
+  - content/procure2save
+  - templates/procure2save
