@@ -1,0 +1,15 @@
+.reader-head {display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.2rem 6%;border-bottom:1px solid var(--line)}
+.reader-head nav {display:flex;position:static;width:auto;padding:0;gap:1rem}
+.reader {max-width:48rem;margin:auto;padding:clamp(2rem,7vw,5rem) 1.4rem}
+.reader h1 {font-size:clamp(2.8rem,7vw,4.7rem)}
+.reader h2 {font-size:clamp(1.7rem,4vw,2.5rem)}
+.reader section,.listing {margin-top:2.5rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.reader article,.lead {font-size:1.16rem}
+.reader .over,.reader time,.meta {color:#685a42}
+.reader .over,.reader label {font-weight:600}
+.reader form {display:grid;gap:1.1rem}
+.reader form input:not([type=checkbox]),.reader textarea {width:100%;display:block;padding:.7rem;margin-top:.35rem;border:1px solid #90989c;background:white;color:var(--ink);font:inherit;border-radius:3px}
+.reader .choice {display:flex;align-items:baseline;gap:.6rem;font-weight:400}
+.reader .note {font-size:.9rem;margin:0}
+.reader .note a,.reader .listing h2 a:hover {text-decoration:underline}
+.reader button {justify-self:start;border:0;border-radius:3px;background:var(--navy);color:white;font:inherit;padding:.65rem 1rem;cursor:pointer}
