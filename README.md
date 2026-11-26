@@ -1,5 +1,11 @@
 # Kelechi Obijiaku professional website — version 2
 
+## Procure2save
+
+The publication hub is at **https://kelechiobijiaku.com/procure2save/**. Its five initial articles reproduce the original LinkedIn editions in full, with the original dates and cover images. Topic archives, full-text search, related reading, Article metadata, social previews, a full-content RSS feed and sitemap entries are generated from `data/procure2save.json` and `content/procure2save/`.
+
+See **[the publishing guide](docs/procure2save-publishing.md)** for the same-day website and LinkedIn workflow, content structure, publication kit, preservation checks and the LinkedIn integration findings. Run `python scripts/build_procure2save.py` after approved article changes. The existing refresh workflow also builds publication changes automatically on source pushes and preserves the event refresh schedule.
+
 ## Preview
 Open index.html in your browser. The photo chooser previews images locally but does not upload them to a server.
 

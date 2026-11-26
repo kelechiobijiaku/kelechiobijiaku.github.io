@@ -1,0 +1,182 @@
+{
+  "publication": {
+    "name": "Procure2save",
+    "tagline": "The decisions behind public value.",
+    "description": "Independent perspectives on public procurement, procurement law, contract management, governance and institutional reform, by Kelechi Uzoma Obijiaku.",
+    "url": "https://kelechiobijiaku.com/procure2save/",
+    "newsletterUrl": "https://www.linkedin.com/newsletters/procure2save-7061017714391228416/",
+    "updated": "2026-11-26",
+    "author": {
+      "name": "Kelechi Uzoma Obijiaku",
+      "url": "https://kelechiobijiaku.com/",
+      "linkedinUrl": "https://www.linkedin.com/in/kelechi-obijiaku/",
+      "image": "/assets/kelechi-headshot.jpg",
+      "bio": "Lawyer and procurement specialist writing on public contracting, governance, institutional reform and the practical choices that shape public value."
+    }
+  },
+  "categories": [
+    {
+      "id": "public-procurement",
+      "name": "Public procurement"
+    },
+    {
+      "id": "procurement-law",
+      "name": "Procurement law"
+    },
+    {
+      "id": "contract-management",
+      "name": "Contract management"
+    },
+    {
+      "id": "governance",
+      "name": "Governance"
+    },
+    {
+      "id": "institutional-reform",
+      "name": "Institutional reform"
+    },
+    {
+      "id": "international-developments",
+      "name": "International developments"
+    },
+    {
+      "id": "inclusive-procurement",
+      "name": "Inclusive procurement"
+    }
+  ],
+  "articles": [
+    {
+      "id": "whose-economy-are-we-building",
+      "url": "/procure2save/whose-economy-are-we-building/",
+      "title": "Whose Economy Are We Building? Rethinking Preference in Nigerian Public Procurement",
+      "date": "2026-11-20",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/whose-economy-are-we-building.html",
+      "coverImage": "/assets/procure2save/whose-economy-are-we-building.png",
+      "coverAlt": "Original cover of Whose Economy Are We Building? Rethinking Preference in Nigerian Public Procurement",
+      "coverWidth": 1280,
+      "coverHeight": 719,
+      "categories": [
+        "inclusive-procurement",
+        "public-procurement",
+        "governance"
+      ],
+      "featured": true,
+      "linkedinUrl": "https://www.linkedin.com/pulse/whose-economy-we-building-rethinking-preference-public-obijiaku--8iwwf/",
+      "source": {
+        "platform": "LinkedIn",
+        "retrievedOn": "2026-11-26",
+        "textSha256": "edc8c5f13551028e3c7574f557fb3f05175d02d27b1ae90bca2d2effac26976d",
+        "coverSha256": "e358f679cc84fda25f70a7f531089bdc4929a9335d9dadfc509962fa0eaa9f6f"
+      }
+    },
+    {
+      "id": "when-a-company-gets-blacklisted",
+      "url": "/procure2save/when-a-company-gets-blacklisted/",
+      "title": "When a Company Gets Blacklisted: The Hidden Cost of Procurement Misconduct",
+      "date": "2026-11-15",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/when-a-company-gets-blacklisted.html",
+      "coverImage": "/assets/procure2save/when-a-company-gets-blacklisted.png",
+      "coverAlt": "Original cover of When a Company Gets Blacklisted: The Hidden Cost of Procurement Misconduct",
+      "coverWidth": 1200,
+      "coverHeight": 675,
+      "categories": [
+        "procurement-law",
+        "governance",
+        "international-developments"
+      ],
+      "featured": false,
+      "linkedinUrl": "https://www.linkedin.com/pulse/when-company-gets-blacklisted-hidden-cost-procurement-obijiaku--in4dc/",
+      "source": {
+        "platform": "LinkedIn",
+        "retrievedOn": "2026-11-26",
+        "textSha256": "011ffd7558abc050cdcc4ec93b1515087246499342e399cc81dd386fd4b001cf",
+        "coverSha256": "f1b3b651c19f6519d1fe27d9a0c698b0f30c57d2572edd579aff2845b6892689"
+      }
+    },
+    {
+      "id": "the-cheapest-bid",
+      "url": "/procure2save/the-cheapest-bid/",
+      "title": "THE CHEAPEST BID CAN BECOME THE MOST EXPENSIVE CONTRACT",
+      "date": "2026-11-06",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/the-cheapest-bid.html",
+      "coverImage": "/assets/procure2save/the-cheapest-bid.png",
+      "coverAlt": "Original cover of THE CHEAPEST BID CAN BECOME THE MOST EXPENSIVE CONTRACT",
+      "coverWidth": 1280,
+      "coverHeight": 719,
+      "categories": [
+        "contract-management",
+        "public-procurement"
+      ],
+      "featured": true,
+      "linkedinUrl": "https://www.linkedin.com/pulse/cheapest-bid-can-become-most-expensive-contract-kelechi-obijiaku--teoie/",
+      "source": {
+        "platform": "LinkedIn",
+        "retrievedOn": "2026-11-26",
+        "textSha256": "cd95743801c07d289a85a540e8933821bc381a8339f128c42eadae5a00d69510",
+        "coverSha256": "54103d3ae500dfb84b3f1a628bec0da5cd856db6dab3dd720046509ba76be78b"
+      }
+    },
+    {
+      "id": "when-governments-say-buy-local",
+      "url": "/procure2save/when-governments-say-buy-local/",
+      "title": "WHEN GOVERNMENTS SAY “BUY LOCAL”, WHO REALLY WINS?",
+      "date": "2026-10-30",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/when-governments-say-buy-local.html",
+      "coverImage": "/assets/procure2save/when-governments-say-buy-local.jpg",
+      "coverAlt": "Original cover of WHEN GOVERNMENTS SAY “BUY LOCAL”, WHO REALLY WINS?",
+      "coverWidth": 1280,
+      "coverHeight": 720,
+      "categories": [
+        "international-developments",
+        "public-procurement"
+      ],
+      "featured": false,
+      "linkedinUrl": "https://www.linkedin.com/pulse/when-governments-say-buy-local-who-really-wins-kelechi-obijiaku--ipc7e/",
+      "source": {
+        "platform": "LinkedIn",
+        "retrievedOn": "2026-11-26",
+        "textSha256": "1b52a083b735a3417e420dee9aa63d57be8cfc080719793b08608f31df834c86",
+        "coverSha256": "45d056eefde1e465ef72ccca5e0ea51609ff3734999a763ae4f3e442dd28e011"
+      }
+    },
+    {
+      "id": "local-content-and-the-cost-question",
+      "url": "/procure2save/local-content-and-the-cost-question/",
+      "title": "LOCAL CONTENT AND THE COST QUESTION IN NIGERIA",
+      "date": "2026-05-03",
+      "websitePublished": "2026-11-26",
+      "status": "published",
+      "approved": true,
+      "contentFile": "content/procure2save/local-content-and-the-cost-question.html",
+      "coverImage": "/assets/procure2save/local-content-and-the-cost-question.jpg",
+      "coverAlt": "Original cover of LOCAL CONTENT AND THE COST QUESTION IN NIGERIA",
+      "coverWidth": 1066,
+      "coverHeight": 600,
+      "categories": [
+        "institutional-reform",
+        "public-procurement",
+        "inclusive-procurement"
+      ],
+      "featured": false,
+      "linkedinUrl": "https://www.linkedin.com/pulse/local-content-cost-question-nigeria-kelechi-uiipe/",
+      "source": {
+        "platform": "LinkedIn",
+        "retrievedOn": "2026-11-26",
+        "textSha256": "24bc178dcdbe9a4ab9cdaa9a34ab2aa97761d682b3eb6e72b3ce28219442b0e7",
+        "coverSha256": "13cd86149805cf1176dd7d1e52b19b04ca94d550577f6f574469c7a0a3a5689b"
+      }
+    }
+  ]
+}

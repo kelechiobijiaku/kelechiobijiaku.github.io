@@ -9,10 +9,18 @@ on:
     branches: [main]
     paths:
       - data/events.json
+      - data/procure2save.json
+      - content/procure2save/**
+      - assets/procure2save/**
       - scripts/build_events.py
+      - scripts/build_procure2save.py
+      - scripts/prepare_publication.py
       - templates/**
       - events.js
+      - procure2save.js
+      - procure2save.css
       - tests/events.test.cjs
+      - tests/test_procure2save.py
       - .github/workflows/refresh-events.yml
 
 permissions:
@@ -37,19 +45,21 @@ jobs:
       - name: Build and check event pages
         run: |
           python scripts/build_events.py
+          python scripts/build_procure2save.py
+          python -m unittest discover -s tests -p 'test_procure2save.py'
           node --test tests/events.test.cjs
       - name: Save date changes and refresh GitHub Pages
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add index.html speaking.html events/ data/events-data.js sitemap.xml
+          git add index.html speaking.html events/ data/events-data.js sitemap.xml publications.html procure2save/ data/procure2save-search.json
           if git diff --cached --quiet; then
-            echo 'Event pages are current.'
+            echo 'Event and publication pages are current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Refresh speaking event listings for Lagos date'
+          git commit -m 'Refresh speaking events and Procure2save publication pages'
           git push
           # GITHUB_TOKEN commits do not themselves trigger the branch Pages build.
           gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
