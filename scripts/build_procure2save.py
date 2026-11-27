@@ -256,7 +256,7 @@ def home_article_reel(articles, newsletter_url):
 <span>{esc(article["title"])}</span></a>''')
     return f'''<!-- PROCURE2SAVE:START --><div class="edition-layout">
 <section class="edition-shelf" aria-label="Procure2save articles"><div class="edition-toolbar">
-<h3>Procure2save</h3><div class="edition-controls" hidden>
+<div class="edition-controls" hidden>
 <button type="button" data-step="-1" aria-label="Previous article">‹</button>
 <button type="button" data-step="1" aria-label="Next article">›</button></div></div>
 <div class="edition-track" tabindex="0" role="region" aria-label="Browse article covers">{''.join(cards)}</div></section>

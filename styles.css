@@ -4,7 +4,7 @@
 .reflection-corner strong {font-size:.9rem;letter-spacing:.05em}
 .reflection-corner blockquote {margin:.5rem 0 0;font:normal clamp(1.15rem,2vw,1.55rem)/1.42 'Playfair Display',Georgia,serif}
 #writing .edition-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(13rem,22%);gap:clamp(1.25rem,4vw,4rem);align-items:center;margin:2rem 0}
-.edition-toolbar {display:flex;align-items:center;justify-content:space-between}
+.edition-toolbar {display:flex;align-items:center;justify-content:flex-end}
 .edition-toolbar h3,.edition-subscribe h3 {font:normal 1.65rem/1.2 'Playfair Display',Georgia,serif;margin:0 0 .75rem}
 .edition-controls button {border:1px solid var(--line);background:white;color:var(--navy);border-radius:50%;width:2.75rem;height:2.75rem;cursor:pointer;font:1.5rem/1 Georgia}
 .edition-controls button:disabled {opacity:.35;cursor:default}
