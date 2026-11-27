@@ -248,10 +248,31 @@ def write_page(url, content):
     path.write_text(content)
 
 
+def home_article_reel(articles, newsletter_url):
+    cards = []
+    for article in articles:
+        cards.append(f'''<a class="edition-tile" href="{esc(article["url"])}">
+<img loading="lazy" decoding="async" src="{esc(article["coverImage"])}" alt="" width="{article["coverWidth"]}" height="{article["coverHeight"]}">
+<span>{esc(article["title"])}</span></a>''')
+    return f'''<!-- PROCURE2SAVE:START --><div class="edition-layout">
+<section class="edition-shelf" aria-label="Procure2save articles"><div class="edition-toolbar">
+<h3>Procure2save</h3><div class="edition-controls" hidden>
+<button type="button" data-step="-1" aria-label="Previous article">‹</button>
+<button type="button" data-step="1" aria-label="Next article">›</button></div></div>
+<div class="edition-track" tabindex="0" role="region" aria-label="Browse article covers">{''.join(cards)}</div></section>
+<aside class="edition-subscribe"><h3>Insights delivered to your inbox.</h3>
+<p>Receive my latest Procure2save articles whenever a new edition is published.</p>
+<a class="p2-button p2-button-dark" href="{esc(newsletter_url)}">Subscribe on LinkedIn</a>
+<a class="p2-text-link" href="#homepage-email">Website email subscription</a>
+<a class="p2-text-link" href="/procure2save/">View the archive</a></aside></div>
+<div id="homepage-email" data-procure2save-signup></div><!-- PROCURE2SAVE:END -->'''
+
+
 def update_integrations(data, articles):
     pub = data['publication']
-    block = f'''<!-- PROCURE2SAVE:START --><aside class="p2-callout"><p class="p2-label">The publication</p><h3><a href="/procure2save/">Procure<span>2</span>save</a></h3><p>Read the latest editions, explore the archive and follow the questions shaping public procurement.</p><div class="p2-actions"><a class="p2-button p2-button-dark" href="/procure2save/">Explore Procure2save</a><a class="p2-text-link" href="{esc(pub['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a></div></aside><div data-procure2save-signup></div><!-- PROCURE2SAVE:END -->'''
+    publication_block = f'''<!-- PROCURE2SAVE:START --><aside class="p2-callout"><p class="p2-label">The publication</p><h3><a href="/procure2save/">Procure<span>2</span>save</a></h3><p>Read the latest editions, explore the archive and follow the questions shaping public procurement.</p><div class="p2-actions"><a class="p2-button p2-button-dark" href="/procure2save/">Explore Procure2save</a><a class="p2-text-link" href="{esc(pub['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a></div></aside><div data-procure2save-signup></div><!-- PROCURE2SAVE:END -->'''
     for filename in ['index.html','publications.html']:
+        block = home_article_reel(articles, pub['newsletterUrl']) if filename == 'index.html' else publication_block
         path = ROOT / filename
         source = path.read_text()
         if '<!-- PROCURE2SAVE:START -->' in source:

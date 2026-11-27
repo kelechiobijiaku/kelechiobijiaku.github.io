@@ -58,3 +58,22 @@ if (galleryGrid) fetch("/gallery.json").then(r => r.ok ? r.json() : []).then(ite
     galleryGrid.append(fig);
   });
 }).catch(() => {});
+
+const editionTrack = document.querySelector('.edition-track');
+if (editionTrack && editionTrack.firstElementChild) {
+  const controls = document.querySelector('.edition-controls');
+  controls.hidden = false;
+  function updateEditionControls() {
+    controls.children[0].disabled = editionTrack.scrollLeft < 2;
+    controls.children[1].disabled = editionTrack.scrollLeft + editionTrack.clientWidth >= editionTrack.scrollWidth - 2;
+  }
+  controls.addEventListener('click', event => {
+    const step = Number(event.target.dataset.step);
+    if (!step) return;
+    const stride = editionTrack.firstElementChild.offsetWidth + parseFloat(getComputedStyle(editionTrack).columnGap);
+    editionTrack.scrollBy({left: step * stride, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  });
+  editionTrack.addEventListener('scroll', updateEditionControls, {passive: true});
+  window.addEventListener('resize', updateEditionControls);
+  updateEditionControls();
+}
