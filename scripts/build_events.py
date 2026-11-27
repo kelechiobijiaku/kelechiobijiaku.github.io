@@ -110,7 +110,7 @@ PORTFOLIO = '''<section class="portfolio-links"><h2>Explore the professional por
 
 
 def header():
-    return '''<a class="skip-link" href="#main-content">Skip to content</a><header class="top"><a class="logo" href="/">K<span>.</span> OBIJIAKU</a><button class="menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">Menu ☰</button><nav id="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/experience.html">Professional experience</a><a href="/policy.html">Policy and institutional reform</a><a href="/publications.html">Publications and insights</a><a href="/research.html">Research</a><a href="/speaking.html" aria-current="page">Speaking &amp; Events</a><a href="/gallery.html">Photo journal</a></nav></header>'''
+    return '''<a class="skip-link" href="#main-content">Skip to content</a><header class="top"><a class="logo" href="/">Kelechi Obijiaku</a><button class="menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">Menu ☰</button><nav id="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/experience.html">Professional experience</a><a href="/policy.html">Policy and institutional reform</a><a href="/publications.html">Publications and insights</a><a href="/research.html">Research</a><a href="/speaking.html" aria-current="page">Speaking &amp; Events</a><a href="/gallery.html">Photo journal</a></nav></header>'''
 
 
 def head(title, description, url, image, graph):
