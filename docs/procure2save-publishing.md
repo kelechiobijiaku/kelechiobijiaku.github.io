@@ -106,3 +106,25 @@ There were no existing full article pages in the repository at implementation ti
 Older editions remain available through the newsletter's original archive link. They have not been represented as fully imported. Import another edition only after its full body, original date and cover can be retrieved; do not reconstruct it from snippets or memory.
 
 The repository is public. Keep confidential drafts outside it. `draft` prevents generation into the publication hub, feed and sitemap; it is not an access-control mechanism for files committed to a public repository. Local publishing kits are excluded by `.gitignore`.
+
+## Website email subscriptions
+
+Brevo handles website email subscriptions to Procure2save. The full-content RSS feed remains available to readers. Email delivery uses the campaign API and runs on article metadata publication, with no scheduled mailing. Only editions explicitly cleared for distribution enter the queue. Other website sections and existing subscribers on LinkedIn are outside this list.
+
+### One-time activation
+
+1. Create a private, empty Brevo list for Procure2save website subscribers. In Marketing → Forms, create a sign-up form for that list. Ask for the email address only. Select **Double confirmation** and use a confirmation email with Brevo’s confirmation link. Include the publication name, purpose, privacy notice and contact information. Keep the list dedicated to these confirmed sign-ups. Never import professional contacts or LinkedIn followers.
+2. Verify the sending identity and authenticate the sending domain using the DNS records shown in this Brevo account. Set the sender name to Kelechi Uzoma Obijiaku and supply the required sender details and address in Brevo. Use Brevo’s campaign unsubscribe facility. Configure anonymous open/click tracking if available in the account. Brevo campaign reports show delivery and engagement. Contact administrators can export the confirmed list through Contacts → select the list → Export. Keep exports private and preserve suppression records.
+3. In a private test with a consenting address, verify that submission sends a confirmation, an unconfirmed address is excluded, confirmation adds the address to the correct list, and an unsubscribe suppresses future campaigns. In GitHub Actions settings save BREVO_API_KEY as a secret, and BREVO_SENDER and BREVO_LIST_ID as variables. Never commit credentials, contact records, private test links or exports. The only provider value used by the public form is the public iframe URL from Brevo’s Share step. Set procure2saveFormUrl in procure2save-signup.js after this check. The homepage writing section, hub, articles and footer use that shared setting.
+4. Review the complete sample in docs/email-preview/one-market.html. Obtain Kelechi’s explicit approval before the first live send. Leave PROCURE2SAVE_EMAIL_ENABLED unset until approval and provider verification are complete. Choose the first intended edition explicitly. Mark only that record with the JSON boolean emailApproved set to true. Set the GitHub Actions variable PROCURE2SAVE_EMAIL_ENABLED to true and publish the metadata change, or run the distribution workflow manually on main if the approved change has already landed.
+5. For later editions, include emailApproved in the publishing step once cleared for email. Publishing requires the approved full article, cover, published status and exact LinkedIn article URL. Recording the LinkedIn URL later also triggers the check. Leave emailApproved absent on every historical edition unless specifically releasing it. Keep original article IDs permanently.
+
+### Delivery and recovery
+
+The workflow checks that the live website serves the exact body, title, LinkedIn link and original cover before creating a campaign. A permanent Git tag under procure2save-email/ claims the edition before submitting the send. Rebuilds, edits, retries and unrelated posts cannot resend a claimed edition. An uncertain send result is held for reconciliation. Check the campaign ID from the workflow in Brevo. If the campaign is definitively an unsent draft, submit that existing draft once after resolving the fault. Keep the claim tag. If multiple drafts were created before a claim, use only the winning run’s campaign. Never send a replacement for a queued or sent campaign. After a website deployment delay, a manual rerun checks unclaimed eligible editions again.
+
+Generate an updated local sample with:
+```sh
+python scripts/procure2save_email.py --preview one-market-one-procurement-law --output docs/email-preview/one-market.html
+```
+The preview identifies where each recipient’s unsubscribe link will appear. Brevo resolves the live campaign token individually. No provider credentials are needed to render a sample.

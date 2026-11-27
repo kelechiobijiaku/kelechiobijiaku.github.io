@@ -193,7 +193,7 @@ def author_box(data):
 
 
 def subscription(data):
-    return f'''<section class="p2-subscribe" aria-labelledby="subscribe-heading"><div><p class="p2-label">Keep the conversation going</p><h2 id="subscribe-heading">Public procurement. A wider perspective.</h2><p>Receive new Procure2save editions through LinkedIn, or follow the publication in your RSS reader.</p></div><div class="p2-subscribe-actions"><a class="p2-button" href="{esc(data['publication']['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a><a class="p2-text-link" href="/procure2save/feed.xml">Follow the RSS feed</a></div></section>'''
+    return f'''<section class="p2-subscribe" aria-labelledby="subscribe-heading"><div><p class="p2-label">Keep the conversation going</p><h2 id="subscribe-heading">Public procurement. A wider perspective.</h2><p>Receive new Procure2save editions through LinkedIn, or follow the publication in your RSS reader.</p></div><div class="p2-subscribe-actions"><a class="p2-button" href="{esc(data['publication']['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a><a class="p2-text-link" href="/procure2save/feed.xml">Follow the RSS feed</a></div></section><div id="email-subscriptions" class="p2-wrap" data-procure2save-signup></div>'''
 
 
 def shell(title, description, url, body, data, image=None, structured=None, article=None):
@@ -214,7 +214,7 @@ def shell(title, description, url, body, data, image=None, structured=None, arti
 </head><body class="p2-page"><a class="p2-skip" href="#main">Skip to content</a>
 <header class="top"><a class="logo" href="/">K<span>.</span> OBIJIAKU</a><button class="menu" aria-label="Toggle navigation" aria-expanded="false">Menu ☰</button><nav id="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/publications.html">Publications &amp; insights</a><a href="/procure2save/" aria-current="{'page' if url == '/procure2save/' else 'true'}">Procure2save</a><a href="/research.html">Research</a><a href="/speaking.html">Speaking &amp; events</a><a href="/#contact">Contact</a></nav></header>
 <main id="main">{body}</main><footer class="p2-footer"><span>© Kelechi Uzoma Obijiaku · Procure2save</span><div><a href="/publications.html">Publications &amp; insights</a><a href="/procure2save/feed.xml">RSS feed</a><a href="/">Professional portfolio</a></div></footer>
-<script src="/script.js" defer></script><script src="/procure2save.js" defer></script></body></html>\n'''
+<script src="/script.js" defer></script><script src="/procure2save-signup.js" defer></script><script src="/procure2save.js" defer></script></body></html>\n'''
 
 
 def related_articles(article, articles):
@@ -250,7 +250,7 @@ def write_page(url, content):
 
 def update_integrations(data, articles):
     pub = data['publication']
-    block = f'''<!-- PROCURE2SAVE:START --><aside class="p2-callout"><p class="p2-label">The publication</p><h3><a href="/procure2save/">Procure<span>2</span>save</a></h3><p>Read the latest editions, explore the archive and follow the questions shaping public procurement.</p><div class="p2-actions"><a class="p2-button p2-button-dark" href="/procure2save/">Explore Procure2save</a><a class="p2-text-link" href="{esc(pub['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a></div></aside><!-- PROCURE2SAVE:END -->'''
+    block = f'''<!-- PROCURE2SAVE:START --><aside class="p2-callout"><p class="p2-label">The publication</p><h3><a href="/procure2save/">Procure<span>2</span>save</a></h3><p>Read the latest editions, explore the archive and follow the questions shaping public procurement.</p><div class="p2-actions"><a class="p2-button p2-button-dark" href="/procure2save/">Explore Procure2save</a><a class="p2-text-link" href="{esc(pub['newsletterUrl'])}" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a></div></aside><div data-procure2save-signup></div><!-- PROCURE2SAVE:END -->'''
     for filename in ['index.html','publications.html']:
         path = ROOT / filename
         source = path.read_text()

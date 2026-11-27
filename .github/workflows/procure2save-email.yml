@@ -1,0 +1,24 @@
+name: Distribute approved Procure2save editions
+on:
+  push:
+    branches: [main]
+    paths: [data/procure2save.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: procure2save-email
+  cancel-in-progress: false
+jobs:
+  distribute:
+    if: github.ref == 'refs/heads/main' && vars.PROCURE2SAVE_EMAIL_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deliver newly approved editions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_SENDER: ${{ vars.BREVO_SENDER }}
+          BREVO_LIST_ID: ${{ vars.BREVO_LIST_ID }}
+        run: python3 scripts/procure2save_email.py
